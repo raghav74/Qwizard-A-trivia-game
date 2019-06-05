@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- Material Design Bootstrap -->
+  <!-- <link href="css/mdb.min.css" rel="stylesheet"> -->
+  <!-- Your custom styles (optional) -->
+  <!--<link href="css/style.css" rel="stylesheet">-->
+  <link href="css/mdbpr.min.css" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet"> -->
+  <style>
+    #question {
+      padding: 0%;
+      color: #66fcf1;
+    }
+    form{
+      /* font-family: Cuprum,cursive;      */
+    }
+  </style>
+  <style>
+    .rgba-stylish-strong {
+      background-color: #212529;
+      border-color: #66fcf1;
+      border-width: 2px;
+    }
+
+    section {
+      background-color: #212529;
+      border-color: #66fcf1;
+      border-width: 2px;
+    }
+
+    .form-cust {
+      background-color: #212529;
+      border-color: #66fcf1;
+    }
+
+    .form-dark .font-small {
+      font-size: 0.8rem;
+    }
+
+    .form-dark .md-form label {
+      color: #66fcf1;
+    }
+
+    .form-dark input[type=text]:focus:not([readonly]) {
+      border-bottom: 1px solid #00C851;
+      -webkit-box-shadow: 0 1px 0 0 #00C851;
+      box-shadow: 0 1px 0 0 #00C851;
+    }
+
+    .form-dark input[type=text]:focus:not([readonly])+label {
+      color: #66fcf1;
+    }
+
+    .form-dark textarea:focus:not([readonly])+label {
+      color: #66fcf1;
+    }
+
+    select {
+      color: #66fcf1;
+    }
+
+    .md-form label {
+      color: #66fcf1;
+    }
+
+    .form-control {
+      color: #66fcf1;
+    }
+
+    .form-control:focus {
+      color: #66fcf1;
+    }
+
+    .text-blue {
+      color: #66fcf1;
+    }
+
+
+    .btn {
+      margin-top: 20px;
+      background-color: #3F729B;
+    }
+
+    #categorySelect,
+    #correctAnswer {
+      background-color: #66fcf1;
+      color: #3F729B;
+      border-color: #3F729B;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container rounded pt-1 col-6 animated fadeIn mb-2">
+
+    <section>
+
+      <div class="card card-image" style=" width:40rem;">
+        <div class="text-blue form-cust py-3 px-5 z-depth-4">
+
+          <div class="text-center">
+            <h3 class="white-text mb-5 mt-4 font-bold"><strong>CONTRI</strong><a class="font-bold" style="color:#66fcf1;"><strong>BUTE</strong></a></h3>
+          </div>
+          <form id="formfield">
+            <div class="form-group">
+              <label for="categorySelect">Category:</label>
+              <select class="form-control browser-default form-control-cust" id="categorySelect" required>
+                  <option value="" disabled selected hidden>Please choose...</option>
+                  <option>Sports</option>
+                  <option>Science</option>
+                  <option>Geography</option>
+                  <option>History</option>
+                  <option>Mythology</option>
+                  <option>Current Affairs</option>
+                  <option>Entertainment</option>
+                  <option>Movies</option>
+                  <option>Technology</option>
+                </select>
+            </div>
+            <div class="md-form">
+              <label for="question">Question:</label>
+              <textarea class="md-textarea text-capitalize" rows="3" id="question" autocomplete="off" required></textarea>
+            </div>
+            <div class="md-form">
+              <label for="a1">First option:</label>
+              <input type="text" class="form-control text-capitalize" name="" id="a1" autocomplete="off" required>
+            </div>
+            <div class="md-form">
+              <label for="a2">Second option:</label>
+              <input type="text" class="form-control text-capitalize" name="" id="a2" autocomplete="off" required>
+            </div>
+            <div class="md-form">
+              <label for="a3">Third option:</label>
+              <input type="text" class="form-control text-capitalize" name="" id="a3" autocomplete="off" required>
+            </div>
+            <div class="md-form">
+              <label for="a4">Fourth option:</label>
+              <input type="text" class="form-control text-capitalize" name="" id="a4" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <label for="correctAnswer">Correct Answer:</label>
+              <select class="form-control text-capitalize browser-default" id="correctAnswer" required>
+                  <option value="" disabled selected hidden>Please choose...</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+            </div>
+
+            <div class="row d-flex align-items-center mb-4 mt-3">
+              <div class="text-center mb-0 col-md-12">
+                <button id="submitBtn" type="button" class="btn btn-block blue-gradient btn-rounded z-depth-1 " data-target="#confirm-submit">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          Confirm Question Submit
+        </div>
+        <div class="modal-body">
+          Are you sure you want to submit the question?
+        </div>
+        <div class="modal-footer">
+          <div class="container-fluid">
+            <div class="row text-center">
+              <div class="col-6">
+                <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">
+                        <i class="fa fa-close mr-1"></i>Cancel</button>
+              </div>
+              <!--<div class="col"></div>-->
+              <!--<a href="#" id="submit" class="btn btn-success success">Submit</a>-->
+              <div class="col-6">
+                <button type="button" class="btn btn-success success btn-lg btn-block" id="addBtn" data-dismiss="modal">
+                        <i class="fa fa-check-circle mr-1"></i>Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <!-- <script type="text/javascript" src="js/popper.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="js/mdbpr.min.js"></script>
+  <script type="text/javascript" src="js/sweetalert.min.js"></script>
+
+  <script type="text/javascript" src="js/app1.js"></script>
+
+  <script>
+    $("#submitBtn").click(function () {
+      if ($("form")[0].checkValidity())
+        $("#confirm-submit").modal("toggle");
+      else
+        swal("Error!", "Please fill all the fields!", "error");
+    });
+    $("#addBtn").click(function (e) {
+      e.preventDefault();
+      category = $("#categorySelect").val();
+      ques = $("#question").val().slice(0, 1).toUpperCase() +
+        $("#question").val().slice(1);
+      op1 = $("#a1").val().slice(0, 1).toUpperCase() +
+        $("#a1").val().slice(1);
+      op2 = $("#a2").val().slice(0, 1).toUpperCase() +
+        $("#a2").val().slice(1);
+      op3 = $("#a3").val().slice(0, 1).toUpperCase() +
+        $("#a3").val().slice(1);
+      op4 = $("#a4").val().slice(0, 1).toUpperCase() +
+        $("#a4").val().slice(1);
+      ans = $("#correctAnswer").val().slice(0, 1).toUpperCase() +
+        $("#correctAnswer").val().slice(1);
+
+      if (category != '' && ques != '' && op1 != '' && op2 != '' && op3 != '' && op4 != '' && ans != '') {
+        $.ajax({
+          url: "php/qadding.php",
+          method: "POST",
+          data: {
+            category: category,
+            ques: ques,
+            op1: op1,
+            op2: op2,
+            op3: op3,
+            op4: op4,
+            ans: ans
+          },
+          success: function (data) {
+            if (data == "Done") {
+              console.log("Question inserted Successfully");
+              location.reload();
+            } else console.log("Error");
+          }
+        });
+      } else swal("Error!", "Please fill all the fields!", "error");
+
+    });
+  </script>
+</body>
+
+</html>

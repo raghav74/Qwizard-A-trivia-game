@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/mdbpr.min.css" rel="stylesheet">
+
+</head>
+<style>
+    .btn-cust {
+        width: 100%
+    }
+
+    .table-r {
+        background-color: #1f2833;
+        color: #66fcf1;
+    }
+
+    .table-h {
+        background-color: #45a29e;
+    }
+
+    .table-r:hover {
+        color: #1f2833!important;
+    }
+
+    #sel {
+        background-color: transparent;
+        color: #66fcf1;
+        border-color: #66fcf1;
+        border-radius: 5px;
+        padding: 0px;
+        height: 50px;
+        border-width: 1px;
+    }
+
+    label {
+        color: #66fcf1;
+    }
+
+    #sel:focus {
+        background-color: #1f2833;
+        color: #66fcf1;
+        border-color: #66fcf1;
+        border-radius: 5px;
+        padding: 0px;
+        height: 50px;
+        border-width: 2px;
+    }
+</style>
+
+<body>
+    <div class="container ">
+        <div class="row">
+            <div class="col-4">
+                <p class=" btn btn-cust btn-lg  btn-outline-default waves-effect" id="expert">User Level</p>
+
+            </div>
+            <div class="col-4">
+                <p class="btn btn-cust btn-lg  btn-outline-default waves-effect" id="experiance">Experience</p>
+
+            </div>
+            <div class="col-4">
+                <p class=" btn btn-cust btn-lg  btn-outline-default waves-effect" id="currentlead">Current Affairs Scores</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div id="seltag" class="mt-4 pl-1">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="genreport" class="mt-4"></div>
+    </div>
+
+    </div>
+</body>
+<script type="text/javascript" src="js/mdbpr.min.js"></script>
+<script>
+    var tag =
+        '<select id="sel" class="form-control browser-default form-control-cust btn-cust"  id="categorySelect"><option value="" disabled selected hidden>Choose Level...</option><option>Beginner</option><option>Apprentice</option><option>Expert</option></select>';
+
+
+    $("#expert").click(function () {
+        
+        $("#genreport").hide();
+        $("#seltag").fadeIn();
+        $("#seltag").html(tag);
+        $("#sel").change(function () {
+            var level = ($(this).val());
+            $.ajax({
+                url: "php/expertrep.php",
+                method: "POST",
+                data: {
+                    level: level
+                },
+                success: function (data) {
+                    $("#genreport").fadeIn();
+                    $("#genreport").html(data);
+                }
+            });
+        });
+    });
+    $("#experiance").click(function () {
+        $("#seltag").hide();
+        $("#genreport").fadeIn();
+
+        $.get("php/experiance.php", function (data, status) {
+            $("#genreport").html(data);
+        })
+    });
+    $("#currentlead").click(function () {
+        $("#seltag").hide();
+        $("#genreport").fadeIn();
+
+        $.get("php/currentlead.php", function (data, status) {
+            $("#genreport").html(data);
+        })
+    });
+</script>
+
+</html>

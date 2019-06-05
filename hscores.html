@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="css/bootstrap4.css" rel="stylesheet"> -->
+    <!-- Material Design Bootstrap -->
+    <!-- <link href="css/mdb.css" rel="stylesheet">  -->
+    <!-- Your custom styles (optional) -->
+</head>
+
+<body>
+
+    <!-- <p class="text-center font-bold white-text" id="para">Select the category for which you want to see the leaderboards</p> -->
+    <div class="container">
+        <div class="jumbotron jumbotron-cat white-text z-depth-2 text-center pt-3 animated fadeIn">
+            <p class="text-center" id="para" style="color:#66fcf1;">Select the category for which you want to see the leaderboards</p>
+            <div class="row text-center mb-4">
+                <div class="col-4">
+                    <div class="btn cat-btn btn-lg btn-outline-white hoverable">Sports</div>
+                </div>
+                <div class="col-4">
+                    <div class="btn cat-btn btn-lg btn-outline-white hoverable">Science</div>
+                </div>
+                <div class="col-4">
+                    <div class="btn cat-btn btn-lg btn-outline-white hoverable">Geography</div>
+                </div>
+            </div>
+            <div>
+                <div class="row text-center mb-4">
+                    <div class="col-4">
+                        <div class="btn cat-btn btn-lg btn-outline-white hoverable">History</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="btn cat-btn btn-lg btn-outline-white hoverable">Famous Personalities</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="btn cat-btn btn-lg btn-outline-white hoverable">Current Affairs</div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div id="entertainment" class="btn cat-btn btn-lg btn-outline-white hoverable">Entertainment</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="btn cat-btn btn-lg btn-outline-white hoverable">Movies</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="btn cat-btn btn-lg btn-outline-white hoverable">Technology</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-4">
+                    <img src="img/Beginner.png" alt="" border=3 height=100 width=100></img>
+                    <p style="color:#66fcf1;" class="mt-2">Beginner</p>
+            </div>
+            <div class="col-4">
+                    <img src="img/Apprentice.png" alt="" border=3 height=100 width=100></img>
+                    <p style="color:#66fcf1;" class="mt-2">Apprentice</p>
+            </div>
+            <div class="col-4">
+                    <img src="img/Expert.png" alt="" border=3 height=100 width=100></img>
+                    <p style="color:#66fcf1;" class="mt-2">Expert</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
+    <!-- <script type="text/javascript" src="js/popper.min.js"></script> -->
+    <!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+    <!-- <script type="text/javascript" src="js/mdb.min.js"></script> -->
+    <style>
+        /* body {
+            background-color: #1c2331;
+            background-image: url(img/cubes.png);
+        } */
+
+        .cat-btn {
+            width: 90%;
+            border-color: #66fcf1!important;
+            color: #66fcf1!important;
+        }
+
+        .cat-btn:hover {
+            border-color: #66fcf1;
+            background-color: #66fcf1;
+            color: #1f2833!important;
+            font-weight: bold!important;
+        }
+
+        .jumbotron-cat {
+            /* border:0.1vh solid #f3f7f6; */
+            border-radius: 0.4em;
+            background-color: #1f2833;
+            /* background:-webkit-radial-gradient(center, ellipse cover, rgba(149,7,64,1) 0%, rgba(111,34,50,1) 100%); */
+            /* background: -webkit-linear-gradient(45deg, #950740 0%, #6f2232 100%); */
+            /* background: -webkit-radial-gradient(center, ellipse cover, #950740 0%, #900A3E 13%, #6f2232 100%); */
+        }
+    </style>
+</body>
+<script>
+    $(".btn-outline-white").click(function (e) {
+        category = $(this).text();
+        $.ajax({
+            url: "score2.php",
+            method: "POST",
+            data: {
+                category: category
+            },
+            success: function (data) {
+                $("#cat").html(data);
+                $("#head").html(category + " Leaderboards");
+            }
+        });
+    });
+</script>
+
+</html>
